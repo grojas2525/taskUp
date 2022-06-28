@@ -34,7 +34,7 @@ function DisplayTodos () {
 
     todoList.innerHTML = '';
 
-    todos.forEach(todo => {
+    todos.sort(function(a, b){return b-a}).forEach(todo => {
         const todoItem = document.createElement('div');
         todoItem.classList.add('todo-item')
 
@@ -109,7 +109,7 @@ function DisplayTodos () {
         deleteButton.addEventListener('click', e => {
             todos = todos.filter(t => t != todo);
             localStorage.setItem('todos', JSON.stringify(todos));
-            DisplayTodos();
+            DisplayTodos()
         })
     })
 }
